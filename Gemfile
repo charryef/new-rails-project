@@ -40,6 +40,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
+  gem 'shoulda'
+  gem 'faker'
+  gem 'factory_bot'
+  gem 'devise-specs'
 end
 
 group :development do
@@ -77,4 +81,3 @@ gem 'bootstrap-sass'
 
 #Devise is a flexible authentication solution for Rails with Warden
 gem 'devise'
-gem 'bootstrap-sass'
