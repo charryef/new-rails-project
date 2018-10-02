@@ -1,10 +1,8 @@
-FactoryGirl.define do
-   pw = RandomData.random_sentence
-   factory :user do
-     name RandomData.random_name
-     sequence(:email){|n| "user#{n}@factory.com" }
-     password pw
-     password_confirmation pw
-     role :member
-   end
- end
+FactoryBot.define do
+  factory :account do
+    email { Faker::Internet.email }
+    password "password"
+    password_confirmation "password"
+    confirmed_at Date.today
+  end
+end
