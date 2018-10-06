@@ -83,3 +83,6 @@ gem 'bootstrap-sass'
 
 #Devise is a flexible authentication solution for Rails with Warden
 gem 'devise'
+
+#Pundit is object oriented authorization for Rails application
+gem 'pundit'
