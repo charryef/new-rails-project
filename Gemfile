@@ -86,3 +86,6 @@ gem 'devise'
 
 #Pundit is object oriented authorization for Rails application
 gem 'pundit'
+
+#Stripe is the easiest way to accept payments online
+gem 'stripe'
