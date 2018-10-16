@@ -44,7 +44,7 @@
       <p>Create private wikis for $15 only. <%= link_to  "Upgrade to Premium", charges_new_path, data: { confirm: "You will be able to create private wikis for a monthly fee of $15." }  %></p>
     <% elsif current_user.premium? %>
       <h3>Downgrade to standard</h3>
-      <p>Your private wikis will become public.  <%= link_to "Downgrade to standard", charges_downgrade_path, data: { confirm: "Are you sure? Your private wikis will become public." } %></p>
+      <p>Your private wikis will become public.  <%= link_to "Downgrade to standard", downgrade_path, data: { confirm: "Are you sure? Your private wikis will become public." } %></p>
     <% end %>
     <br>
     <h3>Cancel my account</h3>
