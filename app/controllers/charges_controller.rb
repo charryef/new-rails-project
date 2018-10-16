@@ -2,7 +2,6 @@ class ChargesController < ApplicationController
   def create
      # Creates a Stripe Customer object, for associating
      # with the charge
-     @user = current_user
      customer = Stripe::Customer.create(
        email: current_user.email,
        card: params[:stripeToken]
@@ -17,11 +16,8 @@ class ChargesController < ApplicationController
      )
 
     current_user.update_attribute(:role, 'premium')
-     flash[:notice] = "Thanks for upgrading to Premium, #{current_user.email}! You can now create and edit private wikis."
-     redirect_to user_path(current_user)
-
-     # current_user.premium!
-     # current_user.save
+     flash[:notice] = "Thanks for your payment, #{current_user.email}! With your premium account, you can now create and edit private wikis."
+     redirect_to wikis_path
 
      # Stripe will send back CardErrors, with friendly messages
      # when something goes wrong.
@@ -34,8 +30,15 @@ class ChargesController < ApplicationController
  def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Blocipedia Membership - #{current_user.email}",
+      description: "Blocipedia Premium Membership - #{current_user.email}",
       amount: 1500
     }
+  end
+
+  def downgrade
+    current_user.role = 'standard'
+    current_user.save!
+    flash[:notice] = "#{current_user.email} was downgraded to standard successfully."
+    redirect_to new_charge_path
   end
 end
