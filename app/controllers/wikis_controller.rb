@@ -18,8 +18,8 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new
-    @wiki.title = params[:wiki][:title][:private]
-    @wiki.body = params[:wiki][:body][:private]
+    @wiki.title = params[:wiki][:title]
+    @wiki.body = params[:wiki][:body]
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -36,8 +36,8 @@ class WikisController < ApplicationController
 
   def update
      @wiki = Wiki.find(params[:id])
-     @wiki.title = params[:wiki][:title][:private]
-     @wiki.body = params[:wiki][:body][:private]
+     @wiki.title = params[:wiki][:title]
+     @wiki.body = params[:wiki][:body]
 
      if @wiki.save
        flash[:notice] = "Wiki was updated."

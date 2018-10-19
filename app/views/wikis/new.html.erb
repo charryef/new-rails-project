@@ -10,7 +10,8 @@
    </ul>
  </div>
  <div class="col-md-8">
-   <%= form_for @wiki do |f| %>
+   <!--refactor and render the partial form  -->
+   <!-- <%= form_for @wiki do |f| %>
      <div class="form-group">
        <%= f.label :title %>
        <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
@@ -22,5 +23,7 @@
      <div class="form-group">
        <%= f.submit "Save", class: 'btn btn-success' %>
      </div>
-   <% end %>
+   <% end %> -->
+   <%= render partial: 'form' %>
  </div>
+</div>

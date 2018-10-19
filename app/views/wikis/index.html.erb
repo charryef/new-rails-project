@@ -1,11 +1,4 @@
-<div>
-  <% if @wikis.private == true %>
-    <h1>Private Wikis</h1>
-  <% else %>
-    <h1>All Wikis</h1>
-  <% end %>
-</div>
-
+<h1>All Wikis</h1>
 <div class="col-md-8">
 <% @wikis.each do |wiki| %>
   <div class="media">
@@ -13,6 +6,7 @@
        <h4 class="media-heading">
          <%= link_to wiki.title, wiki %>
        </h4>
+       <% puts current_user.premium? %>
      </div>
    </div>
 <% end %>
