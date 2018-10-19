@@ -59,7 +59,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
   gem 'shoulda'
-  gem 'faker'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'factory_bot'
   gem 'devise-specs'
 end
@@ -86,3 +86,6 @@ gem 'devise'
 
 #Pundit is object oriented authorization for Rails application
 gem 'pundit'
+
+#Stripe is the easiest way to accept payments online
+gem 'stripe'
