@@ -1,4 +1,11 @@
-<h1>All Wikis</h1>
+<div>
+  <% if @wikis.private == true %>
+    <h1>Private Wikis</h1>
+  <% else %>
+    <h1>All Wikis</h1>
+  <% end %>
+</div>
+
 <div class="col-md-8">
 <% @wikis.each do |wiki| %>
   <div class="media">
