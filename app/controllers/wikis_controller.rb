@@ -1,7 +1,11 @@
 class WikisController < ApplicationController
 
   def index
-    @wikis = Wiki.all
+    if current_user.standard?
+      @wikis = Wiki.where(private: false)
+    else
+      @wikis = Wiki.all
+    end
   end
 
   def show
@@ -14,8 +18,8 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
+    @wiki.title = params[:wiki][:title][:private]
+    @wiki.body = params[:wiki][:body][:private]
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -32,8 +36,8 @@ class WikisController < ApplicationController
 
   def update
      @wiki = Wiki.find(params[:id])
-     @wiki.title = params[:wiki][:title]
-     @wiki.body = params[:wiki][:body]
+     @wiki.title = params[:wiki][:title][:private]
+     @wiki.body = params[:wiki][:body][:private]
 
      if @wiki.save
        flash[:notice] = "Wiki was updated."
