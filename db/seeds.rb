@@ -16,6 +16,7 @@ require 'random_data'
     confirmed_at: Time.now.utc, #skip confirmation
   )
 end
+users = User.all
 
 #Create a standard User
 1.times do
@@ -30,7 +31,8 @@ end
 50.times do
   Wiki.create!(
     title: RandomData.random_sentence,
-    body: RandomData.random_paragraph
+    body: RandomData.random_paragraph,
+    private: false
   )
 end
 wikis = Wiki.all
