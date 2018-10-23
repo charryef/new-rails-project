@@ -89,3 +89,6 @@ gem 'pundit'
 
 #Stripe is the easiest way to accept payments online
 gem 'stripe'
+
+#Red Carpet is a safe markdown parser
+gem 'redcarpet'
