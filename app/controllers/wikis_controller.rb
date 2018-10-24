@@ -1,11 +1,12 @@
 class WikisController < ApplicationController
 
   def index
-    if current_user.admin? || current_user.premium?
-    @wikis = Wiki.all
-    else
-      @wikis = Wiki.where(private: false)
-    end
+    @wikis = policy_scope(Wiki)
+    # if current_user.admin? || current_user.premium?
+    # @wikis = Wiki.all
+    # else
+    #   @wikis = Wiki.where(private: false)
+    # end
   end
 
   def show
