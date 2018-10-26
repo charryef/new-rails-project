@@ -4,7 +4,7 @@ class WikisController < ApplicationController
     #the policy_scope doesn't work for private wikis
     # @wikis = policy_scope(Wiki)
     if current_user.admin? || current_user.premium?
-    @wikis = Wiki.all
+      @wikis = Wiki.all
     else
       @wikis = Wiki.where(private: false)
     end
@@ -16,6 +16,7 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @user = current_user
   end
 
   def create
@@ -33,6 +34,9 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
+    @find_wikis = Collaborator.where(wiki_id: @wiki.id)
+    @collaborators = User.where(id: @find_wikis.pluck(:user_id))
   end
 
   def update
