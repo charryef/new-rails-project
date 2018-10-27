@@ -9,8 +9,4 @@ class Wiki < ApplicationRecord
 
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 10 }, presence: true
-
-  def find_collaborator(user)
-    collaborators.find_by(user_id: user.id)
-  end
 end

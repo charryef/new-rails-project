@@ -18,7 +18,7 @@ class WikiPolicy < ApplicationPolicy
   def destroy?
       false
   end
-  
+
   class Scope
      attr_reader :user, :scope
 
