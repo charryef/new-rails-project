@@ -8,7 +8,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-      user.admin? || user.id == record.user.id
+       user.admin? || user.id == record.user.id || record.collaborators.exists?(user_id: user.id)
   end
 
   def edit?
